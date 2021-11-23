@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Crichunt</string>
+    <string name="league_name">league name</string>
+    <string name="name">name</string>
+    <string name="error">Error</string>
+    <string name="reload">Reload</string>
+    <string name="bowler">Bowler</string>
+    <string name="batsman">Batsman</string>
+    <string name="ball">Ball</string>
+    <string name="there_is_no_data_to_display">There is no data to display</string>
+
+    <string name="banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstistial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="points_table">Points table</string>
+    <string name="sched_table">Sched. | Table</string>
+
+    <string name="privacy">We respect the privacy of all parties viewing and otherwise making use
+of the App, and are committed to protecting their privacy.
+\n\n
+<b>User information :</b>
+\n
+We do not collect any information from our users
+\n
+Links to other sites :
+\n\n
+Our policy discloses the privacy practices for our own App only. Our app
+provides links to other websites also that are beyond our control. We
+shall in no way be responsible in way for your use of such sites.
+\n</string>
+    <!--ca-app-pub-3940256099942544/6300978111 BannerTestAd-->
+    <!--    ca-app-pub-5127709648150793/5714590751  Banner-->
+    <!--    ca-app-pub-5127709648150793/2982338406 Interstitial-->
+    <!--    ca-app-pub-3940256099942544/1033173712   InterstitialTestAd-->
+</resources>

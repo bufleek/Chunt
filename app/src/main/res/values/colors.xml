@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="onSurface">#010101</color>
+    <color name="primary">#4E86FC</color>
+    <color name="onPrimary">#f1f1f1</color>
+    <color name="divider">#E0E0E0</color>
+</resources>

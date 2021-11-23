@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_matches"
+        android:icon="@drawable/ic_matches"
+        android:title="Matches" />
+    <item
+        android:id="@+id/action_news"
+        android:icon="@drawable/ic_news"
+        android:title="News" />
+    <item
+        android:id="@+id/action_stages"
+        android:icon="@drawable/ic_baseline_sports_cricket_24"
+        android:title="Series" />
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_baseline_more_24"
+        android:title="More" />
+</menu>
