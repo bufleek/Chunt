@@ -18,7 +18,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5127709648150793~6323053620" />
+            android:value="ca-app-pub-5127709648150793~5878242280" />
 
         <activity
             android:name="com.sports.crichunt.ui.main.SplashActivity"

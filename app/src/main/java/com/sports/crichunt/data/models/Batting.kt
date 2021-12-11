@@ -13,5 +13,6 @@ data class Batting(
     val fow_score: String,
     val fow_balls: String,
     val rate: String,
-    val scoreboard: String
+    val scoreboard: String,
+    val bowling_player_id: Int?
 )

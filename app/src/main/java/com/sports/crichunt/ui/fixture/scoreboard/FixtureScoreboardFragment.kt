@@ -76,13 +76,15 @@ class FixtureScoreboardFragment : Fragment() {
                         })
                 } else refreshScorecard()
 
-                RequestState.Loading -> states.addView(
-                    View.inflate(
-                        requireContext(),
-                        R.layout.item_loading,
-                        null
+                RequestState.Loading -> if (scoreboardAdapter?.itemCount == 0){
+                    states.addView(
+                        View.inflate(
+                            requireContext(),
+                            R.layout.item_loading,
+                            null
+                        )
                     )
-                )
+                }
                 is RequestState.Success<*> -> {
                     val results = it.result
                     if (results is FixtureScoreboard) {
@@ -107,7 +109,7 @@ class FixtureScoreboardFragment : Fragment() {
             refreshJob?.cancel()
             refreshJob = lifecycleScope.launch {
                 delay(REFRESH_INTERVAL)
-                fixturesViewModel.getFixtureInfo()
+                fixturesViewModel.getFixtureLive()
             }
             refreshJob?.start()
         }

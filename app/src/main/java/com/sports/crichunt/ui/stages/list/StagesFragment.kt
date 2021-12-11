@@ -25,6 +25,7 @@ class StagesFragment : Fragment() {
             startActivity(Intent(requireContext(), StageActivity::class.java).apply {
                 putExtra(StageActivity.KEY_STAGE, Gson().toJson(it))
             })
+//            requireActivity().finish()
         }
     }
 

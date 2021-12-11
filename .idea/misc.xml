@@ -12,6 +12,10 @@
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_fixture_live.xml" value="0.2" />
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_fixture_upcoming.xml" value="0.20102564102564102" />
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_table_row_six.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_ball.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/item_table_row_six.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>

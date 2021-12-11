@@ -33,7 +33,7 @@ class MainRepo : BaseRepo() {
         upcomingDates =
             currentDate.dateToString("yyyy-MM-dd") + "," + upcomingToDate.dateToString("yyyy-MM-dd")
         calendar = Calendar.getInstance()
-        calendar.add(Calendar.MONTH, -1)
+        calendar.add(Calendar.MONTH, -2)
         val finishedToDate = calendar.time
         finishedDates =
             finishedToDate.dateToString("yyyy-MM-dd") + "," + currentDate.dateToString("yyyy-MM-dd")

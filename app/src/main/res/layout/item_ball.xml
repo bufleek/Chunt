@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="BindingBalls">
+
         <variable
             name="ball"
             type="com.sports.crichunt.data.models.Ball" />
@@ -12,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:paddingVertical="12dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingVertical="12dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -23,9 +25,9 @@
                 android:id="@+id/tv_col_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0.1"
                 android:text="@{ball.ball}"
-                android:textColor="?attr/colorPrimary"/>
+                android:textColor="?attr/colorPrimary"
+                tools:text="0.1" />
 
             <TextView
                 android:id="@+id/tv_col_1"
@@ -33,18 +35,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
+                android:text="@{ball.batsman.fullname}"
                 android:textSize="12sp"
-                tools:text="Batsman"
-                android:text="@{ball.batsman.fullname}" />
+                tools:text="Batsman" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
+                android:text="@{ball.bowler.fullname}"
                 android:textSize="12sp"
-                tools:text="Bowler"
-                android:text="@{ball.bowler.fullname}"/>
+                tools:text="Bowler" />
         </TableRow>
 
         <LinearLayout
@@ -55,59 +57,59 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{ball.score.name}"
                 android:textSize="12sp"
-                tools:text="1 Run"
-                android:text="@{ball.score.name}"/>
+                tools:text="1 Run" />
 
             <TextView
                 android:id="@+id/runs"
+                runs="@{ball.score.runs}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                tools:text="R:1"
-                runs="@{ball.score.runs}"
-                android:layout_marginStart="16dp" />
+                tools:text="R:1" />
 
             <TextView
                 android:id="@+id/bye"
+                bye="@{ball.score.bye}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                tools:text="B:1"
-                android:layout_marginStart="10dp"
-                bye="@{ball.score.bye}"/>
+                tools:text="B:1" />
 
             <TextView
                 android:id="@+id/legbye"
+                legbye="@{ball.score.leg_bye}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                tools:text="LB:1"
-                android:layout_marginStart="10dp"
-                legbye="@{ball.score.leg_bye}"/>
+                tools:text="LB:1" />
 
             <TextView
                 android:id="@+id/noball"
+                noball="@{ball.score.noball}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                tools:text="NB:1"
-                noball="@{ball.score.noball}"
-                android:layout_marginStart="10dp" />
+                tools:text="NB:1" />
 
             <TextView
                 android:id="@+id/noballruns"
+                noballruns="@{ball.score.noball_runs}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                tools:text="NBR:1"
-                noballruns="@{ball.score.noball_runs}"
-                android:layout_marginStart="10dp" />
+                tools:text="NBR:1" />
         </LinearLayout>
     </LinearLayout>
 </layout>

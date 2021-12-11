@@ -81,7 +81,7 @@ class FixtureActivity : AppCompatActivity() {
         (application as CricHunt).initInterstitial()
     }
 
-    fun updateScore(scoreboards: ArrayList<Scoreboard>, localTeam: Team, visitorTeam: Team) {
+    fun updateScore(scoreboards: ArrayList<Scoreboard>?, localTeam: Team, visitorTeam: Team) {
         if (!scoreboards.isNullOrEmpty()) {
             val totalsBoard = scoreboards.filter { scoreboard ->  scoreboard.type.equals("total", true) }
             val homeBoard = totalsBoard.find {  scoreboard ->  scoreboard.team_id == localTeam?.id }

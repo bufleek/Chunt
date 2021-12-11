@@ -60,6 +60,7 @@ class FixtureInfoFragment : Fragment() {
                 FixtureActivity.LAUNCH_STAGE,
                 stage
             )
+//            requireActivity().finish()
         }
 
         fixtureViewModel.fixtureInfoRequestState.observe(viewLifecycleOwner) {

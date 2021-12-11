@@ -94,7 +94,7 @@ class ScoreboardAdapter(
         data.clear()
         fixtureScoreboard.manofmatch?.let { data.add(Ui.ManOfTheMatch(it)) }
 
-        for (scoreboard in fixtureScoreboard.scoreboards.filter { it.type.lowercase() == "total" }) {
+        for (scoreboard in fixtureScoreboard.scoreboards.filter { it.type.lowercase() == "total" }.reversed()) {
             val team =
                 if (scoreboard.team_id == fixture.localteam?.id) fixture.localteam else fixture.visitorteam
             data.add(Ui.Title(team?.name + " scoreboard"))
@@ -102,6 +102,7 @@ class ScoreboardAdapter(
             val battingTableData: ArrayList<ArrayList<String>> = ArrayList()
             for (batting in fixtureScoreboard.batting.filter { it.scoreboard == scoreboard.scoreboard }) {
                 val player = fixtureScoreboard.lineup?.find { it.id == batting.player_id }
+                val bowlingPlayer = fixtureScoreboard.lineup?.find { it.id == batting.bowling_player_id }
                 player?.let {
                     battingTableData.add(
                         arrayListOf(
@@ -110,7 +111,9 @@ class ScoreboardAdapter(
                             batting.four_x,
                             batting.six_x,
                             batting.rate,
-                            batting.score
+                            batting.score,
+                            if (batting.active) "ACTIVE" else "false",
+                            bowlingPlayer?.fullname ?: ""
                         )
                     )
                 }
@@ -131,7 +134,8 @@ class ScoreboardAdapter(
                             bowling.medians,
                             bowling.runs,
                             bowling.wickets,
-                            bowling.rate
+                            bowling.rate,
+                            if (bowling.active) "ACTIVE" else "false"
                         )
                     )
                 }

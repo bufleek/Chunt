@@ -26,7 +26,7 @@ class FixturesFragment : Fragment() {
         FixturesAdapter(
             true,
             {
-                startActivity(Intent(requireContext(), FixtureActivity::class.java).apply {
+                startActivity(Intent(requireActivity().baseContext, FixtureActivity::class.java).apply {
                     putExtra(FixtureActivity.FIXTURE, Gson().toJson(it))
                 })
             },
