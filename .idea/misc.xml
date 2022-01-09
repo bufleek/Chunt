@@ -14,6 +14,10 @@
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_table_row_six.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_ball.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/item_error.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/item_error_section.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/item_loading.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/item_loading_section.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/item_table_row_six.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
       </map>

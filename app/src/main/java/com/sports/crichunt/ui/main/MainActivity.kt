@@ -25,6 +25,7 @@ import com.sports.crichunt.ui.stages.list.StagesFragment
 import com.sports.crichunt.utils.CricHunt
 import com.sports.crichunt.utils.MyViewModels
 import com.sports.crichunt.utils.ViewModelFactory
+import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adView: AdView

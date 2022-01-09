@@ -1,10 +1,15 @@
 package com.sports.crichunt.data.repos
 
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.sports.crichunt.data.models.*
+import com.sports.crichunt.data.paging.FixturesPagingSource
 import com.sports.crichunt.utils.dateToString
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -50,7 +55,8 @@ class MainRepo : BaseRepo() {
                     if (response.isSuccessful) {
                         finishedFixturesRequestState.value = RequestState.Success(
                             ArrayList(
-                                response.body()?.data?.sortedByDescending { it.starting_at } ?: ArrayList()
+                                response.body()?.data?.sortedByDescending { it.starting_at }
+                                    ?: ArrayList()
                             )
                         )
                     } else {
@@ -188,24 +194,46 @@ class MainRepo : BaseRepo() {
         })
     }
 
-    fun getNewsArticles(){
+    fun getNewsArticles() {
         newsRequestState.value = RequestState.Loading
-        newsService.getNewsArticles().enqueue(object : Callback<Feed>{
+        newsService.getNewsArticles().enqueue(object : Callback<Feed> {
             override fun onResponse(
                 call: Call<Feed>,
                 response: Response<Feed>
             ) {
-                if(!response.isSuccessful){
-                    newsRequestState.value = RequestState.Error("Failed to get news articles, Something went wrong")
-                }else{
+                if (!response.isSuccessful) {
+                    newsRequestState.value =
+                        RequestState.Error("Failed to get news articles, Something went wrong")
+                } else {
                     newsRequestState.value = RequestState.Success(response.body())
                 }
             }
 
             override fun onFailure(call: Call<Feed>, t: Throwable) {
-                newsRequestState.value = RequestState.Error("Failed to get news articles, Try checking your connection")
+                newsRequestState.value =
+                    RequestState.Error("Failed to get news articles, Try checking your connection")
             }
         })
+    }
+
+    private fun getFixturesFlow(status: String): Flow<PagingData<Fixture>> {
+        return Pager(
+            config = PagingConfig(
+                enablePlaceholders = false,
+                pageSize = 5,
+                initialLoadSize = 5,
+                prefetchDistance = 2
+            ),
+            pagingSourceFactory = { FixturesPagingSource(apiService, status) }
+        ).flow
+    }
+
+    fun getPagedUpcomingFixtures(): Flow<PagingData<Fixture>> {
+        return getFixturesFlow("NS")
+    }
+
+    fun getPagedFinishedFixtures(): Flow<PagingData<Fixture>>{
+        return getFixturesFlow("Finished")
     }
 }
 

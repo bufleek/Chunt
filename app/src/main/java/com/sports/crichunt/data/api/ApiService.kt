@@ -7,7 +7,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 object ApiService {
     private const val BASE_URL = "https://cricket.sportmonks.com"
-    val apiToken = "H0exq7wcbyyNS6T6yDnHi9miphBT0l7VcZfVTLNHwjgZ3dzr17NZu3xAfNI3"
+    val apiToken = "IpSDBML1AIri2Gn47vm3YEaUawrlEd73w5xx6rX3oMAMLpnVcBUznvXi5WR7"
     private const val NEWS_BASE_URL = "https://hindi.news18.com"
 
     fun <T> buildService(service: Class<T>): T {

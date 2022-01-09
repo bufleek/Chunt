@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402372263902",
+    "project_id": "crichunt-125d9",
+    "storage_bucket": "crichunt-125d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402372263902:android:e7817cb78867156ebda74f",
+        "android_client_info": {
+          "package_name": "com.sports.crichunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402372263902-rq5ec52347oofvt9f0pp43ua7m5muh6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaftROl3BPWde-wOV-LUEOKzZOL3kp6hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402372263902-rq5ec52347oofvt9f0pp43ua7m5muh6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
