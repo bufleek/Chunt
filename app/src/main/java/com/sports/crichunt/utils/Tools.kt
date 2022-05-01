@@ -7,7 +7,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 fun getDate(textView: TextView, date: String) {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
     dateFormat.timeZone = TimeZone.getTimeZone("GMT")
     try {
         val formattedDate = dateFormat.parse(date)
@@ -23,7 +23,7 @@ fun Date.dateToString(format: String): String {
 }
 
 fun stringDateToMillis(date: String): Long? {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:s'Z'", Locale.getDefault())
     dateFormat.timeZone = TimeZone.getTimeZone("GMT")
     try {
         val formattedDate = dateFormat.parse(date)

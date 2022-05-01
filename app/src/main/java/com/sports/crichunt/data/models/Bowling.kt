@@ -1,15 +1,15 @@
 package com.sports.crichunt.data.models
 
 data class Bowling(
-    val team_id: Int,
-    val active: Boolean,
-    val scoreboard: String,
-    val player_id: Int,
+    val bowler: String,
     val overs: String,
-    val medians: String,
+    val maidens: String,
     val runs: String,
     val wickets: String,
-    val wide: String,
-    val noball: String,
-    val rate: String,
+    val wides: String,
+    val no_balls: String,
+    val econs: String,
+    val active: Boolean,
+    val team: Int,
+    val fixture: Int
 )

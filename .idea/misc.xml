@@ -12,17 +12,30 @@
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_fixture_live.xml" value="0.2" />
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_fixture_upcoming.xml" value="0.20102564102564102" />
         <entry key="..\:/projects/Freelance/Crichunt/app/src/main/res/layout/item_table_row_six.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.187" />
+        <entry key="app/src/main/res/layout/activity_fixture.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_ball.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_player.xml" value="0.13489583333333333" />
+        <entry key="app/src/main/res/layout/fragment_line_up.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_lineups.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_upcoming.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/item_ball.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_error.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/item_error_section.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/item_fixture_finished.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/item_fixture_live.xml" value="0.2390625" />
+        <entry key="app/src/main/res/layout/item_fixture_upcoming.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/item_lineup_player.xml" value="0.11770833333333333" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/item_loading_section.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/item_man_of_the_match.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_table_row_six.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.187" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

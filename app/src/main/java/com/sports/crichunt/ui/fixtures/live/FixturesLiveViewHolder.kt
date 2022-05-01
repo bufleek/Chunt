@@ -10,8 +10,7 @@ import com.sports.crichunt.databinding.BindingItemLiveFixture
 class FixturesLiveViewHolder(
     private val binding: BindingItemLiveFixture,
     private val isAStageMatch: Boolean = false,
-    private val onFixtureClicked: (Int) -> Unit,
-    private val onStageClicked: (Int, Int) -> Unit
+    private val onFixtureClicked: (Int) -> Unit
 ) :
     RecyclerView.ViewHolder(binding.root) {
     private val tvStageName = itemView.findViewById<TextView>(R.id.tv_stage_name)
@@ -25,16 +24,10 @@ class FixturesLiveViewHolder(
         itemView.setOnClickListener {
             onFixtureClicked(bindingAdapterPosition)
         }
-        tvStageName.setOnClickListener { onStageClicked(bindingAdapterPosition, 0) }
-        tvPointsTable.setOnClickListener { onStageClicked(bindingAdapterPosition, 1) }
     }
 
-    fun bind(fixture: Fixture) {
+    /*fun bind(fixture: Fixture) {
         binding.fixture = fixture
-        if (fixture.stage == null || isAStageMatch) {
-            tvStageName.visibility = View.GONE
-            tvPointsTable.visibility = View.GONE
-        }
         if (!fixture.scoreboards.isNullOrEmpty()) {
             val totalsBoard = fixture.scoreboards.filter { it.type.equals("total", true) }
             val homeBoard = totalsBoard.find { it.team_id == fixture.localteam?.id }
@@ -52,5 +45,5 @@ class FixturesLiveViewHolder(
                 }
             }
         }
-    }
+    }*/
 }

@@ -10,8 +10,7 @@ import com.sports.crichunt.databinding.BindingItemFinishedFixture
 class FixturesFinishedViewHolder(
     private val binding: BindingItemFinishedFixture,
     private val isAStageMatch: Boolean = false,
-    private val onFixtureClicked: (Int) -> Unit,
-    private val onStageClicked: (Int, Int) -> Unit
+    private val onFixtureClicked: (Int) -> Unit
 ) :
     RecyclerView.ViewHolder(binding.root) {
     private val tvStageName = itemView.findViewById<TextView>(R.id.tv_stage_name)
@@ -25,32 +24,30 @@ class FixturesFinishedViewHolder(
         itemView.setOnClickListener {
             onFixtureClicked(bindingAdapterPosition)
         }
-        tvStageName.setOnClickListener { onStageClicked(bindingAdapterPosition, 0) }
-        tvPointsTable.setOnClickListener { onStageClicked(bindingAdapterPosition, 1) }
     }
 
     fun bind(fixture: Fixture) {
         binding.fixture = fixture
-        if (fixture.stage == null || isAStageMatch) {
+        if (/*fixture.stage == null || */isAStageMatch) {
             tvStageName.visibility = View.GONE
             tvPointsTable.visibility = View.GONE
         }
-        if (!fixture.scoreboards.isNullOrEmpty()) {
-            val totalsBoard = fixture.scoreboards.filter { it.type.equals("total", true) }
-            val homeBoard = totalsBoard.find { it.team_id == fixture.localteam?.id }
-            val awayBoard = totalsBoard.find { it.team_id == fixture.visitorteam?.id }
-            homeBoard?.let {
-                tvHomeScore.text = "${it.total}/${it.wickets}"
-                if (it.overs.isNotBlank()) {
-                    tvHomeOvers.text = it.overs + " Ov"
-                }
-            }
-            awayBoard?.let {
-                tvAwayScore.text = "${it.total}/${it.wickets}"
-                if (it.overs.isNotBlank()) {
-                    tvAwayOvers.text = it.overs + " Ov"
-                }
-            }
-        }
+//        if (!fixture.scoreboards.isNullOrEmpty()) {
+//            val totalsBoard = fixture.scoreboards.filter { it.type.equals("total", true) }
+//            val homeBoard = totalsBoard.find { it.team_id == fixture.localteam?.id }
+//            val awayBoard = totalsBoard.find { it.team_id == fixture.visitorteam?.id }
+//            homeBoard?.let {
+//                tvHomeScore.text = "${it.total}/${it.wickets}"
+//                if (it.overs.isNotBlank()) {
+//                    tvHomeOvers.text = it.overs + " Ov"
+//                }
+//            }
+//            awayBoard?.let {
+//                tvAwayScore.text = "${it.total}/${it.wickets}"
+//                if (it.overs.isNotBlank()) {
+//                    tvAwayOvers.text = it.overs + " Ov"
+//                }
+//            }
+//        }
     }
 }

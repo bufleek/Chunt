@@ -6,15 +6,14 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sports.crichunt.data.models.Fixture
-import com.sports.crichunt.data.models.Stage
 import com.sports.crichunt.databinding.BindingItemFinishedFixture
 import com.sports.crichunt.databinding.BindingItemUpcomingFixture
 import com.sports.crichunt.ui.fixtures.results.FixturesFinishedViewHolder
 import com.sports.crichunt.ui.fixtures.upcoming.FixturesUpcomingViewHolder
 
 class FixturesPagerAdapter(
-    private val onFixtureClicked: (Fixture) -> Unit,
-    private val onStageClicked: (Stage, Int) -> Unit
+    private val status: String,
+    private val onFixtureClicked: (Fixture) -> Unit
 ) : PagingDataAdapter<Fixture, RecyclerView.ViewHolder>(FixtureDiffUtil()) {
     class FixtureDiffUtil : DiffUtil.ItemCallback<Fixture>() {
         override fun areItemsTheSame(oldItem: Fixture, newItem: Fixture): Boolean {
@@ -51,13 +50,6 @@ class FixturesPagerAdapter(
                         getItem(it)?.let { fixture ->
                             onFixtureClicked(fixture)
                         }
-                    },
-                    onStageClicked = { position, tab ->
-                        getItem(position).let { fixture ->
-                            fixture?.stage?.let { stage ->
-                                onStageClicked(stage, tab)
-                            }
-                        }
                     })
             }
 
@@ -73,20 +65,13 @@ class FixturesPagerAdapter(
                         getItem(it)?.let { fixture ->
                             onFixtureClicked(fixture)
                         }
-                    },
-                    onStageClicked = { position, tab ->
-                        getItem(position).let { fixture ->
-                            fixture?.stage?.let { stage ->
-                                onStageClicked(stage, tab)
-                            }
-                        }
                     })
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (getItem(position)?.status.equals("ns", true)) {
+        if (status == "SHEDULED") {
             return TYPE_UPCOMING
         }
         return TYPE_FINISHED

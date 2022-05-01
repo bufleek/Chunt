@@ -25,8 +25,6 @@
 
             <TextView
                 android:id="@+id/textView"
-                round="@{fixture.round}"
-                type="@{fixture.type}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_leaf"
@@ -35,10 +33,11 @@
                 android:textColor="?attr/colorOnSecondary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{fixture.status}"
                 tools:text="Type" />
 
             <TextView
-                date="@{fixture.starting_at}"
+                android:text="@{fixture.date ?? ``}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -53,7 +52,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                app:fixtureImage="@{fixture.localteam.image_path}"
+                app:fixtureImage="@{fixture.team_a.logo_url}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:src="@mipmap/ic_launcher" />
@@ -111,7 +110,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
-                android:text="@{fixture.localteam.name}"
+                android:text="@{fixture.team_a.name}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/barrier_local_team"
@@ -123,7 +122,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                app:fixtureImage="@{fixture.visitorteam.image_path}"
+                app:fixtureImage="@{fixture.team_b.logo_url}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:src="@mipmap/ic_launcher" />
@@ -172,7 +171,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
-                android:text="@{fixture.visitorteam.name}"
+                android:text="@{fixture.team_b.name}"
                 android:textAlignment="textEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -191,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:text="@{fixture.note}"
+                android:text="@{fixture.status_note}"
                 android:textAlignment="center"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"

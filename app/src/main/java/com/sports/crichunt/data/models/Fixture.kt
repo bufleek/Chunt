@@ -2,17 +2,13 @@ package com.sports.crichunt.data.models
 
 data class Fixture(
     val id: Int,
-    val league_id: Int,
-    val stage_id: Int,
-    val round: String?,
-    val localteam: Team?,
-    val visitorteam: Team?,
-    val starting_at: String,
-    val type: String,
+    val series: Series,
+    val date: String?,
+    val venue: Venue,
     val status: String,
-    val live: Boolean,
-    val note: String,
-    val stage: Stage?,
-    val venue: Venue?,
-    val scoreboards: ArrayList<Scoreboard> = ArrayList()
+    val status_note: String,
+    val featured: Boolean,
+    val team_a: Team,
+    val team_b: Team,
+    var live: Boolean = false
 )

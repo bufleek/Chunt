@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +18,7 @@ import com.sports.crichunt.R
 import com.sports.crichunt.ui.fixture.FixtureActivity
 import com.sports.crichunt.ui.fixtures.FixturesPagerAdapter
 import com.sports.crichunt.ui.main.MainActivity
-import com.sports.crichunt.ui.main.MainViewModel
-import com.sports.crichunt.utils.CricHunt
-import com.sports.crichunt.utils.MyViewModels
 import com.sports.crichunt.utils.PagerStateAdapter
-import com.sports.crichunt.utils.ViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -31,13 +26,11 @@ class CompleteFixturesFragment : Fragment() {
     private lateinit var states: FrameLayout
     private val fixturesPagingAdapter by lazy {
         FixturesPagerAdapter(
+            "RESULTS",
             {
                 startActivity(Intent(requireContext(), FixtureActivity::class.java).apply {
                     putExtra(FixtureActivity.FIXTURE, Gson().toJson(it))
                 })
-            },
-            { stage, tab ->
-                (requireActivity() as MainActivity).launchStageActivity(stage, tab)
             })
     }
     private val mainViewModel by lazy {
@@ -93,7 +86,7 @@ class CompleteFixturesFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            mainViewModel.getPagedFinishedFixtures().collectLatest {
+            mainViewModel.getFixturesResults().collectLatest {
                 states.removeAllViews()
                 fixturesPagingAdapter.submitData(it)
             }

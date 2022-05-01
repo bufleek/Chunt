@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.sports.crichunt.R
-import com.sports.crichunt.data.models.DlData
 import com.sports.crichunt.data.models.Venue
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -48,29 +47,6 @@ fun typeRound(textView: TextView, type: String?, round: String?) {
 fun date(textView: TextView, date: String?) {
     date?.let {
         getDate(textView, it)
-    }
-}
-
-@BindingAdapter("dlData")
-fun dlData(textView: TextView, dlData: DlData?) {
-    var scores = ""
-    dlData?.let {
-        it.score?.let { score ->
-            scores += score
-        }
-        it.overs?.let { over ->
-            if (scores.isNotBlank()) {
-                scores += ", "
-            }
-            scores += "$over"
-            if (!scores.contains("ov", true)) {
-                scores += " Ov"
-            }
-        }
-    }
-    textView.text = scores
-    if (scores.isBlank()) {
-        textView.visibility = View.GONE
     }
 }
 

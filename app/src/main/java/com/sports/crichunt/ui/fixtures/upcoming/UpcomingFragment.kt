@@ -26,13 +26,11 @@ class UpcomingFragment : Fragment() {
     private lateinit var states: FrameLayout
     private val fixturesPagingAdapter by lazy {
         FixturesPagerAdapter(
+            "SCHEDULED",
             {
                 startActivity(Intent(requireContext(), FixtureActivity::class.java).apply {
                     putExtra(FixtureActivity.FIXTURE, Gson().toJson(it))
                 })
-            },
-            { stage, tab ->
-                (requireActivity() as MainActivity).launchStageActivity(stage, tab)
             })
     }
     private val mainViewModel by lazy {
@@ -87,7 +85,7 @@ class UpcomingFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            mainViewModel.getPagedUpcomingFixtures().collectLatest {
+            mainViewModel.getScheduledFixtures().collectLatest {
                 states.removeAllViews()
                 fixturesPagingAdapter.submitData(it)
             }

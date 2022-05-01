@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sports.crichunt.data.models.Fixture
-import com.sports.crichunt.data.models.FixtureStatus
-import com.sports.crichunt.data.models.Stage
 import com.sports.crichunt.databinding.BindingItemFinishedFixture
 import com.sports.crichunt.databinding.BindingItemLiveFixture
 import com.sports.crichunt.databinding.BindingItemUpcomingFixture
@@ -16,7 +14,7 @@ import com.sports.crichunt.ui.fixtures.upcoming.FixturesUpcomingViewHolder
 class FixturesAdapter(
     private val isFromStage: Boolean,
     private val onFixtureClicked: (Fixture) -> Unit,
-    private val onStageClicked: (Stage, Int) -> Unit
+//    private val onStageClicked: (Stage, Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val fixtures: ArrayList<Fixture> = ArrayList()
 
@@ -31,11 +29,6 @@ class FixturesAdapter(
                 isFromStage,
                 onFixtureClicked = {
                     onFixtureClicked(fixtures[it])
-                },
-                onStageClicked = { position, tab ->
-                    fixtures[position].stage?.let {
-                        onStageClicked(it, tab)
-                    }
                 }
             )
 
@@ -48,11 +41,6 @@ class FixturesAdapter(
                 isFromStage,
                 onFixtureClicked = {
                     onFixtureClicked(fixtures[it])
-                },
-                onStageClicked = { position, tab ->
-                    fixtures[position].stage?.let {
-                        onStageClicked(it, tab)
-                    }
                 }
             )
 
@@ -65,11 +53,6 @@ class FixturesAdapter(
                 isFromStage,
                 onFixtureClicked = {
                     onFixtureClicked(fixtures[it])
-                },
-                onStageClicked = { position, tab ->
-                    fixtures[position].stage?.let {
-                        onStageClicked(it, tab)
-                    }
                 }
             )
         }
@@ -78,9 +61,9 @@ class FixturesAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val fixture = fixtures[position]
         when (holder) {
-            is FixturesUpcomingViewHolder -> holder.bind(fixture)
-            is FixturesFinishedViewHolder -> holder.bind(fixture)
-            is FixturesLiveViewHolder -> holder.bind(fixture)
+//            is FixturesUpcomingViewHolder -> holder.bind(fixture)
+//            is FixturesFinishedViewHolder -> holder.bind(fixture)
+//            is FixturesLiveViewHolder -> holder.bind(fixture)
         }
     }
 
@@ -88,8 +71,8 @@ class FixturesAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (fixtures[position].status) {
-            FixtureStatus.SCHEDULED -> TYPE_UPCOMING
-            FixtureStatus.FINISHED -> TYPE_FINISHED
+//            FixtureStatus.SCHEDULED -> TYPE_UPCOMING
+//            FixtureStatus.FINISHED -> TYPE_FINISHED
             else -> TYPE_LIVE
         }
     }

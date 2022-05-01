@@ -4,14 +4,15 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ApiService {
-    private const val BASE_URL = "https://cricket.sportmonks.com"
-    val apiToken = "IpSDBML1AIri2Gn47vm3YEaUawrlEd73w5xx6rX3oMAMLpnVcBUznvXi5WR7"
+    private const val BASE_URL = "http://64.225.1.125/"
     private const val NEWS_BASE_URL = "https://hindi.news18.com"
 
     fun <T> buildService(service: Class<T>): T {
         val client = OkHttpClient.Builder()
+            .readTimeout(90, TimeUnit.SECONDS)
             .build()
 
         val retrofit = Retrofit.Builder()

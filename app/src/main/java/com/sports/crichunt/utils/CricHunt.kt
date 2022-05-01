@@ -8,14 +8,10 @@ import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
 import com.sports.crichunt.R
 import com.sports.crichunt.data.repos.FixtureRepo
 import com.sports.crichunt.data.repos.MainRepo
-import com.sports.crichunt.data.repos.PlayerRepo
-import com.sports.crichunt.data.repos.StageRepo
 
 class CricHunt : Application() {
     val mainRepo by lazy { MainRepo() }
     val fixtureRepo by lazy { FixtureRepo() }
-    val stageRepo by lazy { StageRepo() }
-    val playerRepo by lazy { PlayerRepo() }
     var mAdManagerInterstitialAd: AdManagerInterstitialAd? = null
 
     fun initInterstitial() {

@@ -6,8 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sports.crichunt.R
-import com.sports.crichunt.data.models.Season
-import com.sports.crichunt.data.models.Stage
 
 class StageViewHolder(
     itemView: View,
@@ -23,18 +21,18 @@ class StageViewHolder(
         itemView.setOnClickListener { onSquadClicked(absoluteAdapterPosition) }
     }
 
-    fun bind(stage: Stage, season: Season?) {
-        tvStageName.text = stage.name
-        tvLeagueName.text = stage.league?.name
-        if (stage.league == null) {
-            imgLeague.visibility = View.GONE
-            tvLeagueName.visibility = View.GONE
-        }
-        Glide.with(tvStageName.context).load(stage.league?.image_path).into(imgLeague)
-        if (season == null) {
-            tvSeason.text = season?.name
-        } else {
-            tvSeason.visibility = View.GONE
-        }
-    }
+//    fun bind(stage: Stage, season: Season?) {
+//        tvStageName.text = stage.name
+//        tvLeagueName.text = stage.league?.name
+//        if (stage.league == null) {
+//            imgLeague.visibility = View.GONE
+//            tvLeagueName.visibility = View.GONE
+//        }
+//        Glide.with(tvStageName.context).load(stage.league?.image_path).into(imgLeague)
+//        if (season == null) {
+//            tvSeason.text = season?.name
+//        } else {
+//            tvSeason.visibility = View.GONE
+//        }
+//    }
 }

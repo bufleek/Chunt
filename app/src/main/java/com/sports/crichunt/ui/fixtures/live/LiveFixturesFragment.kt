@@ -1,6 +1,5 @@
 package com.sports.crichunt.ui.fixtures.live
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,37 +10,31 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.sports.crichunt.R
-import com.sports.crichunt.data.models.Fixture
-import com.sports.crichunt.data.models.RequestState
-import com.sports.crichunt.ui.fixture.FixtureActivity
-import com.sports.crichunt.ui.main.MainActivity
+import com.sports.crichunt.ui.fixtures.FixturesPagerAdapter
 import com.sports.crichunt.ui.main.MainViewModel
-import com.sports.crichunt.ui.stages.fixtures.FixturesAdapter
 import com.sports.crichunt.utils.CricHunt
 import com.sports.crichunt.utils.MyViewModels
+import com.sports.crichunt.utils.PagerStateAdapter
 import com.sports.crichunt.utils.ViewModelFactory
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class LiveFixturesFragment : Fragment() {
     private var refreshJob: Job? = null
     private lateinit var states: FrameLayout
     private val fixturesAdapter by lazy {
-        FixturesAdapter(
-            false,
+        FixturesPagerAdapter(
+            "LIVE",
             {
-                startActivity(Intent(requireContext(), FixtureActivity::class.java).apply {
-                    putExtra(FixtureActivity.FIXTURE, Gson().toJson(it))
-                })
+//            CLICKED
             },
-            { stage, tab ->
-                (requireActivity() as MainActivity).launchStageActivity(stage, tab)
-            })
+        )
     }
     private val mainViewModel by ViewModelLazy(
         MainViewModel::class,
@@ -56,62 +49,51 @@ class LiveFixturesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_upcoming, container, false)
     }
 
+    private fun showError(message: String) {
+        val errorView = View.inflate(requireContext(), R.layout.item_error, null)
+        errorView.findViewById<TextView>(R.id.tv_error).text = message
+        errorView.findViewById<Button>(R.id.btn_reload).setOnClickListener {
+            fixturesAdapter.refresh()
+        }
+        states.addView(errorView)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         states = view.findViewById(R.id.fl_upcoming_state)
         view.findViewById<RecyclerView>(R.id.rv_upcoming).apply {
-            adapter = fixturesAdapter
+            adapter = fixturesAdapter.withLoadStateFooter(footer = PagerStateAdapter {
+                fixturesAdapter.retry()
+            })
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        mainViewModel.liveFixturesRequestState.observe(viewLifecycleOwner) {
-            states.removeAllViews()
-            when (it) {
-                is RequestState.Success<*> -> {
-                    if (it.result is ArrayList<*>) {
-                        fixturesAdapter.updateData(it.result as ArrayList<Fixture>)
-                        if (fixturesAdapter.itemCount != 0) {
-                            refreshLive()
-                        }
-                    }
+        fixturesAdapter.addLoadStateListener {
+            when (val loadState = it.refresh) {
+                is LoadState.NotLoading -> {
+                    states.removeAllViews()
                     if (fixturesAdapter.itemCount == 0) {
-                        states.removeAllViews()
-                        states.addView(
-                            View.inflate(
-                                requireContext(),
-                                R.layout.item_empty_state,
-                                null
-                            ).apply {
-                                findViewById<TextView>(R.id.tv_empty_message).text =
-                                    "There are no live fixtures to show."
-                            })
+                        showError("No live fixture found")
                     }
                 }
-                RequestState.Loading -> {
-                    if (fixturesAdapter.itemCount == 0) {
-                        states.addView(
-                            View.inflate(
-                                requireContext(),
-                                R.layout.item_loading,
-                                null
-                            )
-                        )
-                    }
+                LoadState.Loading -> {
+                    states.removeAllViews()
+                    states.addView(View.inflate(requireContext(), R.layout.item_loading, null))
                 }
-                is RequestState.Error -> if (fixturesAdapter.itemCount == 0) {
-                    states.addView(
-                        View.inflate(requireContext(), R.layout.item_error, null).apply {
-                            findViewById<TextView>(R.id.tv_error).text = it.error
-                            findViewById<Button>(R.id.btn_reload).setOnClickListener { mainViewModel.getLiveFixtures() }
-                        })
-                } else {
-                    refreshLive()
+                is LoadState.Error -> {
+                    states.removeAllViews()
+                    showError(
+                        loadState.error.message ?: "Failed to load fixtures, something went wrong"
+                    )
                 }
             }
-
         }
 
-        mainViewModel.getLiveFixtures()
+        lifecycleScope.launch {
+            mainViewModel.getLiveFixtures().collectLatest {
+                fixturesAdapter.submitData(it)
+            }
+        }
     }
 
     private fun refreshLive() {

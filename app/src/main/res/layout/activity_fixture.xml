@@ -38,7 +38,7 @@
 
                     <ImageView
                         android:id="@+id/img_local_team"
-                        fixtureImage="@{fixture.localteam.image_path}"
+                        fixtureImage="@{fixture.team_a.logo_url}"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_marginTop="20dp"
@@ -53,7 +53,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="5dp"
-                        android:text="@{fixture.localteam.name}"
+                        android:text="@{fixture.team_a.name}"
                         android:textAlignment="center"
                         android:textColor="?attr/colorOnPrimary"
                         app:layout_constraintEnd_toStartOf="@+id/imageView4"
@@ -67,10 +67,11 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="5dp"
-                        android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textSize="20sp"
                         android:textColor="?attr/colorOnPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="@{fixture.team_a.score.full_score}"
                         app:layout_constraintEnd_toStartOf="@+id/imageView4"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_local_team" />
@@ -88,7 +89,7 @@
 
                     <ImageView
                         android:id="@+id/img_visiting_team"
-                        fixtureImage="@{fixture.visitorteam.image_path}"
+                        fixtureImage="@{fixture.team_b.logo_url}"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         app:layout_constraintBottom_toBottomOf="@+id/img_local_team"
@@ -102,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:text="@{fixture.visitorteam.name}"
+                        android:text="@{fixture.team_b.name}"
                         android:textAlignment="center"
                         android:textColor="?attr/colorOnPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -116,13 +117,28 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:textColor="?attr/colorOnPrimary"
+                        android:textSize="20sp"
+                        android:text="@{fixture.team_b.score.full_score}"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView4"
                         app:layout_constraintTop_toBottomOf="@id/tv_away_team" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{fixture.status_note}"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="10dp"
+                        ads:layout_constraintStart_toStartOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@+id/tv_local_scores"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.tabs.TabLayout

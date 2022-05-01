@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="divider">#252525</color>
-    <color name="primary">#4E86FC</color>
+    <color name="primary">#FF5148</color>
     <color name="onSurface">#f1f1f1</color>
     <color name="onPrimary">#f1f1f1</color>
 </resources>
